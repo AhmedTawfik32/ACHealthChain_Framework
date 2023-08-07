@@ -1,0 +1,19 @@
+test:
+    name: ehrchain-contract-benchmark
+    description: test benchmark of EHR chain
+    workers:
+      number: 5
+    rounds:
+      - label: queryEHR
+        description: Read ehrs benchmark
+        txDuration: 60
+        rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 1
+        workload:
+          module: workload/healthcareworkload.js
+          arguments:
+            assets: 10
+            contractId: ehrchain
+
